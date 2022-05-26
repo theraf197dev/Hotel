@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.card-title{
+  background-color: black;
+  color: white;
+  width: -webkit-fill-available;
+  border-radius: 0px!important;
+}
+
+.custom-card{
+  border-radius: 0px!important;
+  margin: 10px;
+}
+
+div{
+  margin-right: 0px!important;
+  margin-left: 0px!important;
+  --bs-gutter-x: 0;
+}
+
+.custom-button{
+  color: #fff;
+  background-color: rgb(1 149 146);
+  border-color: rgb(1 149 146);
+  border-radius: 5%;
+}
+
+.go-center{
+  text-align: center;
+}
+
+.go-rigth{
+  text-align: end;
+}
