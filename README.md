@@ -1,2 +1,2 @@
 # Hotel
-React App that simulates an hotel reservation
+React App that simulates a hotel reservation
