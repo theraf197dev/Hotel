@@ -1,4 +1,6 @@
-const ReservationCard = ({title, boards}) => {
+import { NavLink } from "react-router-dom"
+
+const ReservationCard = ({id, title, boards}) => {
   return (
     <div className="card mb-3 custom-card">
         <h5 className="card-header card-title">{title}</h5>
@@ -12,7 +14,7 @@ const ReservationCard = ({title, boards}) => {
                         $ {board.price}
                     </div>
                     <div className="col go-rigth">
-                        <button className="custom-button">RESERVAR</button>
+                        <NavLink className="btn custom-button" to={`/reservations/${board.id}`} state={board.id}>RESERVAR</NavLink>
                 </div>
             </div>
             ))}

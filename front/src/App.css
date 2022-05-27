@@ -20,6 +20,11 @@ div{
   --bs-gutter-x: 0;
 }
 
+a{
+  color: white;
+  text-underline-offset: none;
+}
+
 .custom-button{
   color: #fff;
   background-color: rgb(1 149 146);

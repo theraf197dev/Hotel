@@ -1,39 +1,25 @@
+import {Routes, Route, BrowserRouter as Router, Navigate} from 'react-router-dom'
+import React, { lazy, Suspense } from "react";
 import './App.css';
-import {useState, useEffect} from "react";
-import CheckInOut from './components/CheckInOut/CheckInOut';
-import ReservationList from './components/ReservationList/ReservationList';
-import axios from 'axios';
+
+const MainPage = lazy(() => import("./pages/MainPage"));
+const ReservationDetail = lazy(() => import("./pages/ReservationDetail"));
 
 function App() {
-  const [filter, setFilter] = useState({})
-  const [reservations, setReservations] = useState([])
-
-  useEffect(() => {
-    const url = 'http://localhost:3000/' + 'reservations';
-    axios.get(url)
-        .then(res => {
-            const json = res.data;
-
-            setReservations(json.rooms)
-        });
-  }, [filter])
-
-  const childToParent = (from, to) =>{
-    setFilter({});
-    if(from.toString().includes('NaN')|| to.toString().includes('NaN'))
-      return
-    
-    setFilter({
-      'from': from,
-      'to': to
-    })
-  }
   return (
     <>
-      <CheckInOut childToParent={childToParent} />
-      <ReservationList reservations={reservations} />
+      <Suspense fallback={<h1 className="text-center">Loading...</h1>}>
+        <Router>
+          <Routes>
+            <Route path="/reservations" element={ <MainPage/> } />
+            <Route path="/reservations/:id" element={<ReservationDetail />} />
+
+            <Route path="*" element={<Navigate to="/reservations" />} />
+          </Routes>
+        </Router>
+      </Suspense>
     </>
-  )
+  );
 }
 
 export default App;

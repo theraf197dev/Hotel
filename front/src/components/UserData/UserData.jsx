@@ -1,8 +1,20 @@
+import axios from 'axios';
 import React from 'react'
-import { useEffect } from 'react';
-import paises from '../../data/paises'
+import { useState, useEffect } from 'react';
 
 const UserData = ({price}) => {
+  const [paises, setPaises] = useState([]);
+
+  useEffect(() => {
+    const url = 'http://localhost:3000/' + 'countries';
+    axios.get(url)
+      .then(res =>{
+        setPaises(res.data);
+      })
+      .catch(err => console.log(err))
+  }, [])
+  
+
   return (
     <>
       <form className="row g-3 needs-validation" noValidate>
@@ -21,7 +33,7 @@ const UserData = ({price}) => {
         <div className="form-floating">
           <select className="form-select" id="floatingSelect" aria-label="Pais">
             {paises.map((item, i) => {
-              <option value={item.name_en}/>
+              <option key={i} value={item.code}>{item.name_es}</option>
             })}
           </select>
           <label htmlFor="floatingSelect">País</label>
@@ -36,7 +48,7 @@ const UserData = ({price}) => {
           </div>
         </div>
         <p>{price} $</p>
-        <button className="btn btn-primary" type="submit">Reservar</button>
+        <button className="btn custom-button" type="submit">Reservar</button>
       </form>
     </>
   )
