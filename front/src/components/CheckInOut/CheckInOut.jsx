@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import { DayPicker } from 'react-day-picker';
 import { useEffect } from 'react';
+import es from 'date-fns/locale/es';
 
 import 'react-day-picker/dist/style.css';
 
 const CheckInOut = ({childToParent}) => {
-  const [range, setRange] = useState();
+  const [range, setRange] = useState({to: new Date('2022-05-28'), from: new Date('2022-05-22')});
 
   useEffect(() => {
     let from = FormatDate(range?.from);
@@ -24,6 +25,7 @@ const CheckInOut = ({childToParent}) => {
       defaultMonth={new Date()}
       selected={range}
       onSelect={setRange}
+      locale={es}
     />
   );
 }

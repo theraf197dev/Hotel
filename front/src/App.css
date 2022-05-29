@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+p {
+  font: 400 20px/1 RobotoCondensed Bold,Trebuchet MS,Helvetica,Arial,sans-serif;
+  margin-bottom: 0px;
+}
+
+.rdp-months{
+  justify-content: center;
+}
+
 .card-title{
   background-color: black;
   color: white;
@@ -11,12 +20,34 @@
 
 .custom-card{
   border-radius: 0px!important;
-  margin: 10px;
+  margin: 10px 10px 40px 10px;
+}
+
+.box-shadow-eff{
+  box-shadow: 0px 2px 4px 2px gray;
+  border-radius: 0;
+  border: none
+}
+
+.card-content{
+  padding: 10px;
+}
+
+.modal.show-modal{
+  display: unset;
+  top: 25%;
+  --bs-modal-footer-border-width: 0px;
+}
+
+.spacing{
+  margin: 50px 50px 50px 50px;
+}
+
+.col-middle{
+  align-self: center;
 }
 
 div{
-  margin-right: 0px!important;
-  margin-left: 0px!important;
   --bs-gutter-x: 0;
 }
 
@@ -25,17 +56,61 @@ a{
   text-underline-offset: none;
 }
 
+.confirm-container{
+  margin: 50px 50px 0px 50px;
+  box-shadow: 0px 8px 13px 1px gray;
+}
+
+.confirm-div{
+  padding: 20px;
+}
+
+.bottom-line{
+  border-bottom: inset;
+}
+
 .custom-button{
   color: #fff;
+  margin: 5px;
   background-color: rgb(1 149 146);
   border-color: rgb(1 149 146);
   border-radius: 5%;
+}
+
+.big-button{
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
 }
 
 .go-center{
   text-align: center;
 }
 
-.go-rigth{
+.go-right{
   text-align: end;
+}
+
+.go-left{
+  text-align: start;
+}
+
+.grid-container{
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-item{
+  text-align: center;
+}
+
+.grid-price{
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.grey-fill{
+  color: grey;
 }

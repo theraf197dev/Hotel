@@ -4,6 +4,7 @@ import './App.css';
 
 const MainPage = lazy(() => import("./pages/MainPage"));
 const ReservationDetail = lazy(() => import("./pages/ReservationDetail"));
+const ConfirmationPage = lazy(() => import("./pages/ConfirmationPage"));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/reservations" element={ <MainPage/> } />
             <Route path="/reservations/:id" element={<ReservationDetail />} />
+            <Route path="/reservations/:id/booked/:res" element={<ConfirmationPage />} />
 
             <Route path="*" element={<Navigate to="/reservations" />} />
           </Routes>

@@ -5,7 +5,7 @@ const ReservationList = ({reservations}) => {
        <>
         {(reservations.length <= 0) ? <div data-testid="no-reservations">No reservations</div>
         :
-        <div className='row align-items-start no-border' data-testid="reservations">
+        <div className='no-border go-center spacing' data-testid="reservations">
             {reservations.map((reservation, i) => <ReservationCard key={i} title={reservation.name} boards={reservation.boards} />)}
         </div>
         }

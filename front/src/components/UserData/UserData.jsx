@@ -1,45 +1,45 @@
 import axios from 'axios';
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { URL } from '../../constants';
 
-const UserData = ({price}) => {
+const UserData = ({price, handleFormSubmit}) => {
   const [paises, setPaises] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:3000/' + 'countries';
+    const url = URL + '/countries?_sort=name_es';
     axios.get(url)
       .then(res =>{
         setPaises(res.data);
       })
       .catch(err => console.log(err))
   }, [])
-  
 
   return (
     <>
-      <form className="row g-3 needs-validation" noValidate>
+      <form className="needs-validation go-center" noValidate onSubmit={handleFormSubmit}>
         <div className="form-floating mb-3">
-          <input type="text" className="form-control" id="floatingName" placeholder="Juan" required/>
-          <label htmlFor="floatingInput">Nombre</label>
-        </div>
-        <div className="form-floating">
-          <input type="text" className="form-control" id="floatingLasName" placeholder="Pere" required/>
-          <label htmlFor="floatingPassword">Apellido</label>
+          <input name='username' type="text" className="form-control" id="floatingUsername" placeholder="Juan" required/>
+          <label htmlFor="floatingUsername">Nombre</label>
         </div>
         <div className="form-floating mb-3">
-          <input type="email" className="form-control" id="floatingEmail" placeholder="email@email.com" required/>
-          <label htmlFor="floatingInput">Email</label>
+          <input name='lastname' type="text" className="form-control" id="floatingLastName" placeholder="Pere" required/>
+          <label htmlFor="floatingLastname">Apellido</label>
         </div>
-        <div className="form-floating">
-          <select className="form-select" id="floatingSelect" aria-label="Pais">
+        <div className="form-floating mb-3">
+          <input name='email' type="email" className="form-control" id="floatingEmail" placeholder="email@email.com" required/>
+          <label htmlFor="floatingEmail">Email</label>
+        </div>
+        <div className="form-floating mb-4">
+          <select name='country' className="form-select" id="floatingCountry" aria-label="Pais">
             {paises.map((item, i) => {
-              <option key={i} value={item.code}>{item.name_es}</option>
+              return <option key={i} value={item.name_es} selected={item.code === 'ES'}>{item.name_es}</option>
             })}
           </select>
-          <label htmlFor="floatingSelect">País</label>
+          <label htmlFor="floatingCountry">País</label>
         </div>
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
+        <div className="form-check mb-4 go-left">
+          <input name='agreement' className="form-check-input" type="checkbox" id="invalidCheck" required/>
           <label className="form-check-label" htmlFor="invalidCheck">
             Acepto términos y condiciones
           </label>
@@ -47,8 +47,10 @@ const UserData = ({price}) => {
             Debe aceptar los términos y condiciones
           </div>
         </div>
-        <p>{price} $</p>
-        <button className="btn custom-button" type="submit">Reservar</button>
+        <div className='go-right mb-4 '>
+          <p>TOTAL <b>$ {price}</b></p>
+        </div>
+        <button className="btn custom-button big-button" type="submit">Reservar</button>
       </form>
     </>
   )

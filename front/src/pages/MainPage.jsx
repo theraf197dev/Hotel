@@ -2,15 +2,15 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import CheckInOut from '../components/CheckInOut/CheckInOut'
 import ReservationList from '../components/ReservationList/ReservationList'
+import {URL} from '../constants'
 
 const MainPage = () => {
     const [filter, setFilter] = useState({})
     const [reservations, setReservations] = useState([])
   
     useEffect(() => {
-      let url = 'http://localhost:3000/' + 'reservations';
+      let url = URL + '/reservations';
       
-      console.log(filter)
       if(filter.from !== undefined && filter.to !== undefined){
         url += '?checkin=' + filter.from + "&checkout=" + filter.to;
       }
@@ -23,7 +23,7 @@ const MainPage = () => {
     }, [filter])
   
     const childToParent = (from, to) =>{
-      if(from.toString().includes('NaN')|| to.toString().includes('NaN'))
+      if(from.toString().includes('NaN')|| to.toString().includes('NaN') || from === to)
         return
       
       setFilter({
