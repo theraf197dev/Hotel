@@ -8,6 +8,7 @@ For it to work, you need to run the following commands in order:
 
 ## Install and run JSON-SERVER(MOCK API):
 
+### `npm install`
 ### `cd mock-api`
 ### `json-server --watch src/db.json --port=3001`
 
@@ -15,6 +16,8 @@ For it to work, you need to run the following commands in order:
 ## Install and Start Front:
 ### `cd ../front`
 ### `npm install`
+### `npm run test`
+### `npm run lint`
 ### `npm start`
 
 

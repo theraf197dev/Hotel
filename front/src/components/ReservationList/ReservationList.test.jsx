@@ -50,18 +50,18 @@ describe('<ReservationList />', () => {
     },
   ]
   test('it sholud return 2 reservations', () => {
-    const reservationList = render(<Router><ReservationList reservations={reservations}/></Router>);
+    render(<Router><ReservationList reservations={reservations}/></Router>);
 
-    const reservationsCmp = reservationList.getByTestId("reservations");
+    const reservationsCmp = screen.getByTestId("reservations");
 
-    expect(reservationsCmp.childElementCount === 2);
+    expect(reservationsCmp.childElementCount === 2).toBeTruthy();
   });
 
   test('it sholud return no reservations', () => {
-    const reservationList = render(<Router><ReservationList reservations={[]}/></Router>);
+    render(<Router><ReservationList reservations={[]}/></Router>);
 
-    const reservationsCmp = reservationList.getByTestId("no-reservations");
+    const reservationsCmp = screen.getByTestId("no-reservations");
 
-    expect(reservationsCmp.firstChild.nodeValue === 'No reservations');
+    expect(reservationsCmp).toHaveTextContent('No reservations');
   });
 });

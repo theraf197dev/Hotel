@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import  ResumeReservationCard from './ResumeReservationCard';
-import {BrowserRouter as Router} from 'react-router-dom';
 
 test('it sholud return 3 boards', () => {
   const reservation = {
-    "name": "Doble Vista Piscina",
+    "title": "Doble Vista Piscina",
     "checkin": "2022-05-22",
     "checkout": "2022-05-28",
     "board": {
@@ -14,15 +13,15 @@ test('it sholud return 3 boards', () => {
     }
   }
 
-  const reservationCard = render(<ResumeReservationCard name={reservation.name} checkin={reservation.checkin} checkout={reservation.checkout} board={reservation.board}/>);
+  render(<ResumeReservationCard name={reservation.title} checkin={reservation.checkin} checkout={reservation.checkout} board={reservation.board}/>);
 
-  const name = reservationCard.getByTestId("name");
-  const checkinOut = reservationCard.getByTestId("checkinOut");
-  const boardName = reservationCard.getByTestId("boardName");
-  const boardPrice = reservationCard.getByTestId("boardPrice");
+  const title = screen.getByTestId("title");
+  const checkinOut = screen.getByTestId("checkinOut");
+  const boardName = screen.getByTestId("boardName");
+  const boardPrice = screen.getByTestId("boardPrice");
 
-  expect(name.nodeValue === "Doble Vista Piscina");
-  expect(checkinOut.nodeValue === '2022-05-22 - 2022-05-28');
-  expect(boardName.nodeValue === 'solo alojamiento');
-  expect(boardPrice.nodeValue === 352);
+  expect(title).toHaveTextContent('Doble Vista Piscina');
+  expect(checkinOut).toHaveTextContent('2022/05/22 - 2022/05/28');
+  expect(boardName).toHaveTextContent('solo alojamiento');
+  expect(boardPrice).toHaveTextContent(352);
 });

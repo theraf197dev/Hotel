@@ -24,11 +24,11 @@ test('it sholud return 3 boards', () => {
     ]
   }
 
-  const reservationCard = render(<Router><ReservationCard title={reservation.title} boards={reservation.boards}/></Router>);
+  render(<Router><ReservationCard title={reservation.title} boards={reservation.boards}/></Router>);
 
-  const title = reservationCard.getByTestId("title");
-  const boardsCmp = reservationCard.getByTestId("boards");
+  const title = screen.getByTestId("title");
+  const boardsCmp = screen.getByTestId("boards");
 
-  expect(title.nodeValue === "Doble Vista Piscina");
-  expect(boardsCmp.childElementCount === 3);
+  expect(title).toHaveTextContent('Doble Vista Piscina');
+  expect(boardsCmp).toHaveTextContent(3);
 });
