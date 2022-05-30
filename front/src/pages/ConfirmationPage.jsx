@@ -23,7 +23,7 @@ const ConfirmationPage = () => {
       </div>
       <div className='confirm-div bottom-line go-left'>
         <p className='mb-2'><b>{name}</b></p>
-        <p className='mb-2'><em>{checkin} - {checkout}</em></p>
+        <p className='mb-2'><em>{checkin.replaceAll('-', '/')} - {checkout.replaceAll('-', '/')}</em></p>
         <p>{board.name}</p>
       </div>
       <div className='confirm-div bottom-line go-right'>
