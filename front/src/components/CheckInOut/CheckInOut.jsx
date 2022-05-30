@@ -13,7 +13,7 @@ const CheckInOut = ({childToParent}) => {
     let to = FormatDate(range?.to);
 
     childToParent(from, to);
-  }, [range])
+  }, [range])// eslint-disable-line react-hooks/exhaustive-deps
   
   const FormatDate = (date) =>{
     date = new Date(date);

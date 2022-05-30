@@ -1,6 +1,6 @@
 import React from 'react'
 import UserData from '../components/UserData/UserData'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal/Modal'
 import ResumeReservationCard from '../components/ResumeReservationCard/ResumeReservationCard'
 import { useEffect, useState } from 'react'
@@ -17,7 +17,7 @@ const ReservationDetail = () => {
   const [modalTitle, setModalTitle] = useState('')
 
   const location = useLocation()
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const url = URL + '/reservations';
@@ -38,7 +38,7 @@ const ReservationDetail = () => {
         }
       })
       .catch(err => console.log(err))
-  }, [])
+  }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
   const closeModal = () => {
     setMsg('');

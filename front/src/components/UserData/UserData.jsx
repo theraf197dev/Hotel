@@ -31,7 +31,7 @@ const UserData = ({price, handleFormSubmit}) => {
           <label htmlFor="floatingEmail">Email</label>
         </div>
         <div className="form-floating mb-4">
-          <select name='country' className="form-select" id="floatingCountry" aria-label="Pais">
+          <select name='country' className="form-select" id="floatingCountry" aria-label="Pais" data-testid="country">
             {paises.map((item, i) => {
               return <option key={i} value={item.name_es} selected={item.code === 'ES'}>{item.name_es}</option>
             })}
