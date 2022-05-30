@@ -8,12 +8,13 @@ For it to work, you need to run the following commands in order:
 
 ## Install and run JSON-SERVER(MOCK API):
 
-### `npm install`
 ### `cd mock-api`
+### `npm install`
 ### `json-server --watch src/db.json --port=3001`
 
 
 ## Install and Start Front:
+
 ### `cd ../front`
 ### `npm install`
 ### `npm run test`
