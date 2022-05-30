@@ -7,9 +7,6 @@ import {URL} from '../constants'
 const MainPage = () => {
     const [filter, setFilter] = useState({})
     const [reservations, setReservations] = useState([])
-
-    console.log(reservations)
-    console.log(filter)
   
     useEffect(() => {
       let url = URL + '/reservations';
